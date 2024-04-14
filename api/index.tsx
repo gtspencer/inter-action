@@ -56,7 +56,6 @@ app.hono.post("/interaction", async (c) => {
   if (result.valid) {
     const interactorFid = result.action.interactor.fid
 
-    console.log('checking casts for fid ' + interactorFid)
     let casts = await neynarClient.fetchAllCastsCreatedByUser(interactorFid, {
       limit: 100
     })
@@ -76,30 +75,19 @@ app.hono.post("/interaction", async (c) => {
       return c.json({ message: "Of course you like yourself" }, 400);
     }
 
-    console.log(typeof(fid))
-    console.log(`does ${fid} like ${interactorFid}`)
-    let reacted = false
+    let likeCount = 0;
     for (let c of casts.result.casts) {
-      console.log(c.reactions)
       const reactionFids = c.reactions.fids;
-      for (let reaction of reactionFids) {
-        console.log(typeof(reaction))
-        if (reaction.toString() == fid.toString()) {
-          console.log('found reaction')
-          reacted = true;
-        }
-      }
       if (reactionFids.includes(fid)) {
-        console.log('found reaction')
-        reacted = true
+        likeCount++
       }
     }
 
     let message = `${username} hasn't liked you recently`
-    if (reacted) {
-      let message = `${username} likes you`;
+    if (likeCount > 0) {
+      let message = `${username} liked you ${likeCount} times`;
       if (message.length > 30) {
-        message = "Likes you";
+        message = `Liked you ${likeCount} times`;
       }
     } else {
       if (message.length > 30) {
