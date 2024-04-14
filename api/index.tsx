@@ -56,9 +56,12 @@ app.hono.post("/interaction", async (c) => {
   if (result.valid) {
     const interactorFid = result.action.interactor.fid
 
+    console.log('checking casts for fid ' + interactorFid)
     let casts = await neynarClient.fetchAllCastsCreatedByUser(interactorFid, {
       limit: 100
     })
+
+    console.log(casts.result.casts.length + " casts to look through")
 
     const cast = await neynarClient.lookUpCastByHashOrWarpcastUrl(
       result.action.cast.hash,
