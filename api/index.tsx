@@ -75,6 +75,8 @@ app.hono.post("/interaction", async (c) => {
       return c.json({ message: "Of course you like yourself" }, 400);
     }
 
+    
+
     let likeCount = 0;
     for (let c of casts.result.casts) {
       const reactionFids = c.reactions.fids;
@@ -82,6 +84,8 @@ app.hono.post("/interaction", async (c) => {
         likeCount++
       }
     }
+
+    console.log(likeCount + " likes found")
 
     let message = `${username} hasn't liked you recently`
     if (likeCount > 0) {
