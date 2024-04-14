@@ -82,9 +82,16 @@ app.hono.post("/interaction", async (c) => {
       }
     }
 
-    let message = `${username} interacts with you`;
-    if (message.length > 30) {
-      message = "Interacts with you";
+    let message = `${username} hasn't interacted recently`
+    if (reacted) {
+      let message = `${username} interacts with you`;
+      if (message.length > 30) {
+        message = "Interacts with you";
+      }
+    } else {
+      if (message.length > 30) {
+        message = "Hasn't interacted recently";
+      }
     }
 
     return c.json({ message });
