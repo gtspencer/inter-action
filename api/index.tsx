@@ -70,7 +70,7 @@ app.hono.post("/interaction", async (c) => {
       },
     } = cast;
     if (result.action.interactor.fid === fid) {
-      return c.json({ message: "Nice try." }, 400);
+      return c.json({ message: "Of course you like yourself" }, 400);
     }
 
     
