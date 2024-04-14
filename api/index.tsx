@@ -76,12 +76,18 @@ app.hono.post("/interaction", async (c) => {
       return c.json({ message: "Of course you like yourself" }, 400);
     }
 
-    
+    console.log(typeof(fid))
     console.log(`does ${fid} like ${interactorFid}`)
     let reacted = false
     for (let c of casts.result.casts) {
       console.log(c.reactions)
       const reactionFids = c.reactions.fids;
+      for (let reaction of reactionFids) {
+        console.log(typeof(reaction))
+        if (reaction.toString() == fid.toString()) {
+          reacted = true;
+        }
+      }
       if (reactionFids.includes(fid)) {
         reacted = true
       }
