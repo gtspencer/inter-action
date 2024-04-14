@@ -77,6 +77,7 @@ app.hono.post("/interaction", async (c) => {
     }
 
     
+    console.log(`does ${fid} like ${interactorFid}`)
     let reacted = false
     for (let c of casts.result.casts) {
       console.log(c.reactions)
