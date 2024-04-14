@@ -85,10 +85,12 @@ app.hono.post("/interaction", async (c) => {
       for (let reaction of reactionFids) {
         console.log(typeof(reaction))
         if (reaction.toString() == fid.toString()) {
+          console.log('found reaction')
           reacted = true;
         }
       }
       if (reactionFids.includes(fid)) {
+        console.log('found reaction')
         reacted = true
       }
     }
