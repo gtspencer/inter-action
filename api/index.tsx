@@ -79,7 +79,7 @@ app.hono.post("/interaction", async (c) => {
     
     let reacted = false
     for (let c of casts.result.casts) {
-      console.log(casts.result.casts)
+      console.log(c.reactions)
       const reactionFids = c.reactions.fids;
       if (reactionFids.includes(fid)) {
         reacted = true
