@@ -82,15 +82,15 @@ app.hono.post("/interaction", async (c) => {
       }
     }
 
-    let message = `${username} hasn't interacted recently`
+    let message = `${username} hasn't liked you recently`
     if (reacted) {
-      let message = `${username} interacts with you`;
+      let message = `${username} likes you`;
       if (message.length > 30) {
-        message = "Interacts with you";
+        message = "Likes you";
       }
     } else {
       if (message.length > 30) {
-        message = "Hasn't interacted recently";
+        message = "Hasn't liked you recently";
       }
     }
 
