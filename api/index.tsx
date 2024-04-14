@@ -37,7 +37,6 @@ export const app = new Frog({
 app.hono.get("/interaction", async (c) => {
   return c.json({
     name: "Inter Action",
-    icon: "interaction",
     description: "Check if this user has interacted with your last 100 posts",
     aboutUrl: "https://github.com/gtspencer/inter-action",
     action: {
