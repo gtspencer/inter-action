@@ -118,7 +118,7 @@ app.frame("/", (c) => {
           <Heading color="fcPurple" align="center" size="64">
             Inter Action
           </Heading>
-          <Text color="fcPurple" align="center">Check if a caster has liked any of your last 100 casts</Text>
+          <Text color="fcPurple" align="center">Check how many times a caster has liked your last 100 casts</Text>
         </VStack>
       </Box>
     ),
